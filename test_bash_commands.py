@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
+from airflow.providers.standard.operators.bash import BashOperator
 
 default_args = {
     'owner': 'airflow',
@@ -14,7 +14,7 @@ with DAG(
     'test_bash_commands',
     default_args=default_args,
     description='Test DAG with Bash commands',
-    schedule_interval='@hourly',
+    schedule='@hourly',
     catchup=False,
     tags=['test', 'bash'],
 ) as dag:

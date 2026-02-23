@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-from airflow.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
 
 def calculate_sum(a, b):
     result = a + b
@@ -24,7 +24,7 @@ with DAG(
     'test_math_operations',
     default_args=default_args,
     description='Simple math operations test',
-    schedule_interval=timedelta(hours=6),
+    schedule=timedelta(hours=6),
     catchup=False,
     tags=['test', 'math', 'python'],
 ) as dag:

@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 
 def print_hello():
     print("Hello World from Test DAG!")
@@ -22,7 +22,7 @@ with DAG(
     'test_hello_world',
     default_args=default_args,
     description='Test Hello World DAG',
-    schedule_interval='@daily',
+    schedule='@daily',
     catchup=False,
     tags=['test', 'hello-world'],
 ) as dag:

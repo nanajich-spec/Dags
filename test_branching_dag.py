@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
+from airflow.providers.standard.operators.bash import BashOperator
 from airflow.operators.python import BranchPythonOperator, PythonOperator
 from random import choice
 
@@ -29,7 +29,7 @@ with DAG(
     'test_branching_workflow',
     default_args=default_args,
     description='Test DAG with conditional branching',
-    schedule_interval='@hourly',
+    schedule='@hourly',
     catchup=False,
     tags=['test', 'branching'],
 ) as dag:

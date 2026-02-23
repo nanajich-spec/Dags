@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
 from airflow.sensors.python import PythonSensor
 from random import random
 
@@ -29,7 +29,7 @@ with DAG(
     'test_sensor_workflow',
     default_args=default_args,
     description='Test DAG with sensor waiting for conditions',
-    schedule_interval='@daily',
+    schedule='@daily',
     catchup=False,
     tags=['test', 'sensor'],
 ) as dag:

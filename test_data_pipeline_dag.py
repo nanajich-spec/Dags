@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
 
 default_args = {
     'owner': 'test',
@@ -36,7 +36,7 @@ with DAG(
     'test_data_pipeline',
     default_args=default_args,
     description='Test ETL data pipeline DAG',
-    schedule_interval='0 */6 * * *',  # Every 6 hours
+    schedule='0 */6 * * *',  # Every 6 hours
     catchup=False,
     tags=['test', 'etl', 'data-pipeline'],
 ) as dag:

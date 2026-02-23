@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
+from airflow.providers.standard.operators.bash import BashOperator
 
 # Default arguments for the DAG
 default_args = {
@@ -18,7 +18,7 @@ with DAG(
     'example_bash_dag',
     default_args=default_args,
     description='A simple example DAG',
-    schedule_interval=timedelta(days=1),
+    schedule=timedelta(days=1),
     catchup=False,
     tags=['example'],
 ) as dag:

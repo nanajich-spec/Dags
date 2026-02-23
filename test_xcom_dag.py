@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
 
 default_args = {
     'owner': 'test',
@@ -55,7 +55,7 @@ with DAG(
     'test_xcom_communication',
     default_args=default_args,
     description='Test DAG with XCom for task communication',
-    schedule_interval='@daily',
+    schedule='@daily',
     catchup=False,
     tags=['test', 'xcom'],
 ) as dag:
