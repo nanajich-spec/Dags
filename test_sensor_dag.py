@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.providers.standard.operators.bash import BashOperator
-from airflow.providers.standard.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
 from airflow.sensors.python import PythonSensor
 from random import random
 
