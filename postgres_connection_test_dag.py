@@ -23,7 +23,7 @@ def test_postgres_connection(**context):
     """
     try:
         # Replace 'postgres_default' with your connection ID from Airflow UI
-        postgres_hook = PostgresHook(postgres_conn_id='postgres_default')
+        postgres_hook = PostgresHook(postgres_conn_id='postgres')
         
         # Test connection
         conn = postgres_hook.get_conn()
@@ -69,7 +69,7 @@ with DAG(
     # Task 2: Execute a simple SQL query using PostgresOperator
     execute_query_task = PostgresOperator(
         task_id='execute_simple_query',
-        postgres_conn_id='postgres_default',  # Change this to your connection ID
+        postgres_conn_id='postgres',  # Change this to your connection ID
         sql="""
             SELECT 
                 'Connection test successful' as status,
@@ -82,7 +82,7 @@ with DAG(
     # Task 3: List all tables in public schema
     list_tables_task = PostgresOperator(
         task_id='list_tables',
-        postgres_conn_id='postgres_default',  # Change this to your connection ID
+        postgres_conn_id='postgres',  # Change this to your connection ID
         sql="""
             SELECT 
                 table_schema,
